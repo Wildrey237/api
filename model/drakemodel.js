@@ -6,5 +6,6 @@ export default mongoose.model('drakemodel', {
     lyrics_url: String,
     lyrics: String,
     track_views: String,
+    cover_links: String,
     date: {type: Date, 'default': Date.now, index: true}
 });

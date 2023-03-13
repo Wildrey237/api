@@ -4,6 +4,7 @@ import morgan from 'morgan';
 import session from 'express-session'
 import TakeData from './tools/import.js';
 import authRoute from './routes/auth.js';
+import drakeRoute from './routes/drake.js';
  
 const PORT = 3500;
 const App = express();
@@ -29,11 +30,9 @@ mongoose.connect('mongodb://root:root@127.0.0.1:27017/', {
     }
 });
 
-
 App.get('/',(request, response) => {
     return response.send('<h1>Wilfried BEMELINGUE API Projet</h1>');
 });
-App.use('/login',authRoute);
 
 App.get('/import',(request, response) => {
     try {
@@ -43,6 +42,8 @@ App.get('/import',(request, response) => {
         return response.status(400).send({msg: 'error :'+error});
     }
 });
+App.use('/drake',drakeRoute);
+App.use('/login',authRoute);
 
 
 App.listen(PORT, () => {

@@ -11,5 +11,8 @@ Router.post('/', (request, response) => {
 Router.get('/me', (request, response) => {
     me(request, response);
 })
+Router.get('/logout', (request, response) => {
+    logout(request, response);
+})
 
 export default Router;
