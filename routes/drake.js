@@ -32,4 +32,5 @@ Router.get('/title/:title', (request, response) => {
 
 Router.post('/add', (request, response) => {
     add_title(request, response);
+})
 export default Router;
