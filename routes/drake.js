@@ -4,6 +4,8 @@ import {all_album} from "../module/drake.js"
 import {all_title} from "../module/drake.js"
 import {trackByAlbum} from "../module/drake.js"
 import {trackById} from "../module/drake.js"
+import {add_title} from "../module/drake.js"
+
 
 const Router = express.Router();
 
@@ -30,7 +32,5 @@ Router.get('/title/:title', (request, response) => {
     trackByTitle(request, response);
 })
 
-Router.post('/add', (request, response) => {
-    add_title(request, response);
-})
+
 export default Router;

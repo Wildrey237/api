@@ -1,15 +1,18 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import morgan from 'morgan';
-import session from 'express-session'
+import session from 'express-session';
 import TakeData from './tools/import.js';
 import authRoute from './routes/auth.js';
 import drakeRoute from './routes/drake.js';
+import cookieParser from 'cookie-parser';
+
  
 const PORT = 3500;
 const App = express();
 App.use(morgan('dev'));
 App.use(express.json());
+App.use(cookieParser())
 App.use(session({
     secret: 'keyboard cat',
     resave: false,
@@ -19,7 +22,6 @@ App.use(session({
         secure: false
     }
 }))
-
 mongoose.connect('mongodb://root:root@127.0.0.1:27017/', {
     useNewUrlParser: true
 }, (error) => {
@@ -43,7 +45,7 @@ App.get('/import',(request, response) => {
     }
 });
 App.use('/drake',drakeRoute);
-App.use('/login',authRoute);
+App.use('/auth',authRoute);
 
 
 App.listen(PORT, () => {
